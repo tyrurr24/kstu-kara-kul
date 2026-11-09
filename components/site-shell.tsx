@@ -253,7 +253,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-slate-800 pt-8 text-sm text-slate-400">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} КГТУ им. И. Раззакова — Кара-Кульский филиал</p>
+          <p>© 2026 КГТУ им. И. Раззакова — Кара-Кульский филиал</p>
             <div className="flex flex-wrap items-center gap-5">
               <Link href="/privacy" className="transition hover:text-amber-300">Политика конфиденциальности</Link>
               <Link href="/accessibility" className="transition hover:text-amber-300">Доступность</Link>
