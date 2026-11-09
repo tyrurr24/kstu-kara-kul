@@ -1,0 +1,2 @@
+import { InfoPage } from "@/components/info-page";
+export default function AccessibilityPage(){return <InfoPage title="Доступность" description="Мы развиваем сайт с учётом клавиатурной навигации, контраста и уважения к пользователям с разными потребностями." items={[{title:"Базовые принципы",text:"Семантическая разметка, видимый focus, крупные интерактивные цели и поддержка уменьшения анимации."}]}/>}

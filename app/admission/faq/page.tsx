@@ -1,0 +1,3 @@
+import { faqItems } from "@/lib/site-data";
+import { PageHeader, SiteShell } from "@/components/site-shell";
+export default function AdmissionFaqPage(){return <SiteShell><PageHeader title="Частые вопросы" description="Короткие ответы для абитуриентов. Сроки и требования нужно подтверждать у приёмной комиссии."/><section className="mx-auto max-w-4xl space-y-4 px-4 py-20 sm:px-6 lg:px-8">{faqItems.map((item)=><details key={item.q} className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"><summary className="cursor-pointer font-bold">{item.q}</summary><p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">{item.a}</p></details>)}</section></SiteShell>}

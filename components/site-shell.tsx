@@ -126,6 +126,7 @@ function Header({ theme, onToggleTheme }: { theme: string; onToggleTheme: () => 
           <Link href="/search" className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-700 bg-slate-900/60 text-slate-200 transition hover:text-amber-300" aria-label="Поиск по сайту">
             <Search className="h-4 w-4" />
           </Link>
+          <Link href="/account" className="rounded-full border border-slate-700 bg-slate-900/60 px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-amber-300 hover:text-amber-300">Кабинет</Link>
           <Link href="/admission/application" className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-amber-300">
             Подать заявку <ArrowRight className="h-4 w-4" />
           </Link>
@@ -168,6 +169,7 @@ function Header({ theme, onToggleTheme }: { theme: string; onToggleTheme: () => 
                   </Link>
                 ))}
               </div>
+              <Link href="/account" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200" onClick={() => setOpen(false)}>Кабинет</Link>
               <Link href="/admission/application" className="rounded-full bg-amber-400 px-4 py-2 text-sm font-semibold text-slate-950" onClick={() => setOpen(false)}>
                 Подать заявку
               </Link>

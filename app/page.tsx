@@ -1,299 +1,66 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Building2, ChartNoAxesCombined, Compass, GraduationCap, MapPin, ShieldCheck, Sparkles, Star } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarDays, ChevronRight, GraduationCap, MapPin, Sparkles, Zap } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
-import { SiteShell, SectionHeading, MotionReveal, Card } from "@/components/site-shell";
-import { campus, documents, faqItems, gallery, programs, quickLinks, stats, timeline } from "@/lib/site-data";
+import { SiteShell } from "@/components/site-shell";
+import { campus, programs, quickLinks, stats } from "@/lib/site-data";
+
+const tracks = [
+  { code: "01", title: "Энергетика", text: "Сети, станции и автоматизация энергосистем", href: "/education/programs/electroenergetics", color: "sun" },
+  { code: "02", title: "Строительство", text: "Гидротехнические и инфраструктурные проекты", href: "/education/programs/construction", color: "blue" },
+  { code: "03", title: "Транспорт", text: "Безопасность дорожного движения и процессы", href: "/education/programs/transport-processes", color: "lime" },
+  { code: "04", title: "Физика и математика", text: "Фундамент для науки и технического мышления", href: "/education/programs/physics-math", color: "ink" },
+];
 
 export default function HomePage() {
   return (
     <SiteShell>
-      <section className="relative isolate overflow-hidden bg-slate-950">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
-            alt="Современный университетский корпус"
-            fill
-            priority
-            className="object-cover opacity-70"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(15,23,42,0.2),_rgba(2,6,23,0.87))]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pb-28 lg:pt-20">
-          <div className="grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-            <div>
-              <p className="mb-6 text-xs font-semibold uppercase tracking-[0.32em] text-amber-300">Образование • Инженерия • Будущее</p>
-              <h1 className="max-w-3xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-7xl">Создаём инженеров будущего</h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200/90">
-                Филиал КГТУ имени И. Раззакова в Кара-Куле — техническое образование, инженерные знания и возможности для профессионального развития.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="/education" className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 text-base font-semibold text-slate-950 transition hover:bg-amber-300">
-                  Выбрать направление <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link href="/admission" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10">
-                  Узнать о поступлении
-                </Link>
-              </div>
+      <main>
+        <section className="campus-hero">
+          <div className="campus-hero__grid" />
+          <div className="campus-hero__orbit campus-hero__orbit--one" />
+          <div className="campus-hero__orbit campus-hero__orbit--two" />
+          <div className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
+            <div className="mb-12 flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.22em] text-blue-100/80">
+              <span>КГТУ · Кара-Куль</span>
+              <span className="hidden sm:block">Инженерное образование с 1963 года</span>
             </div>
-
-            <div className="rounded-[2rem] border border-slate-800/80 bg-slate-950/40 p-6 backdrop-blur-sm">
-              <div className="mb-4 flex items-center justify-between text-sm text-slate-300">
-                <span>Год основания</span>
-                <span className="rounded-full border border-amber-400/50 bg-amber-500/10 px-3 py-1 text-amber-200">1963</span>
-              </div>
-              <div className="space-y-4">
-                {stats.slice(0, 3).map((stat) => (
-                  <div key={stat.label} className="border-b border-slate-800 pb-4 last:border-b-0 last:pb-0">
-                    <div className="text-3xl font-black text-white">{stat.value}</div>
-                    <div className="text-sm text-slate-300">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <MotionReveal>
-          <SectionHeading
-            eyebrow="О филиале"
-            title="Более полувека инженерного образования"
-            description="С 1963 года филиал играет важную роль в подготовке инженеров для энергетики, строительства и технического развития региона. История института тесно связана со строительством Токтогульской ГЭС и развитием высококвалифицированных кадров Кыргызстана."
-          />
-        </MotionReveal>
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div className="space-y-6 text-base leading-8 text-slate-600 dark:text-slate-300">
-            <p>Кара-Кульский технический институт КГТУ им. И. Раззакова был образован как общетехнический факультет Фрунзенского политехнического института и стал важным центром подготовки инженеров для строительства гидроэлектростанций и энергетики южного региона.</p>
-            <p>Сегодня филиал сохраняет сильную инженерную традицию и сочетает академическую базу с практико-ориентированным подходом к обучению, обеспечивая будущим специалистам знания, необходимые для современной отрасли.</p>
-            <Link href="/about/history" className="inline-flex items-center gap-2 font-semibold text-slate-900 dark:text-white">Наша история <ArrowRight className="h-4 w-4" /></Link>
-          </div>
-          <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/50 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="overflow-hidden rounded-[1.5rem]">
-                <Image
-                  src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80"
-                  alt="Учебный процесс в филиале"
-                  width={900}
-                  height={1200}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="space-y-4">
-                <div className="overflow-hidden rounded-[1.5rem]">
-                  <Image
-                    src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80"
-                    alt="Инженерное обучение"
-                    width={900}
-                    height={900}
-                    className="h-52 w-full object-cover"
-                  />
+            <div className="grid items-end gap-12 lg:grid-cols-[1.15fr_.85fr]">
+              <div className="relative z-10">
+                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold text-white backdrop-blur"><Sparkles className="h-4 w-4 text-lime-300" /> Цифровой кампус</div>
+                <h1 className="max-w-4xl text-5xl font-black leading-[.92] tracking-[-.07em] text-white sm:text-7xl lg:text-[6.8rem]">ПРОЕКТИРУЕМ<br /><span className="text-lime-300">БУДУЩЕЕ.</span></h1>
+                <p className="mt-8 max-w-xl text-lg leading-8 text-blue-50/85 sm:text-xl">Кара-Кульский технический институт КГТУ имени И. Раззакова — место, где инженерные знания становятся реальными решениями для региона.</p>
+                <div className="mt-9 flex flex-wrap gap-3">
+                  <Link href="/education" className="inline-flex items-center gap-2 rounded-full bg-lime-300 px-6 py-3.5 font-bold text-slate-950 transition hover:-translate-y-0.5 hover:bg-lime-200">Выбрать направление <ArrowRight className="h-4 w-4" /></Link>
+                  <Link href="/admission" className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-bold text-white transition hover:bg-white/20">Поступить <ArrowUpRight className="h-4 w-4" /></Link>
                 </div>
-                <div className="rounded-[1.5rem] bg-slate-950 p-6 text-white">
-                  <p className="text-xs uppercase tracking-[0.28em] text-amber-300">История</p>
-                  <div className="mt-3 text-3xl font-black">1963</div>
-                  <p className="mt-2 text-sm text-slate-300">Год официального начала инженерного образования в Кара-Куле.</p>
+              </div>
+              <div className="relative z-10 ml-auto w-full max-w-md">
+                <div className="hero-panel">
+                  <div className="flex items-start justify-between"><span className="text-xs font-bold uppercase tracking-[.24em] text-blue-100/70">KARA-KUL / 01</span><Zap className="h-6 w-6 text-lime-300" /></div>
+                  <div className="hero-panel__ring"><div className="hero-panel__core">K</div></div>
+                  <div className="mt-8 flex items-end justify-between gap-4"><div><p className="text-4xl font-black text-white">1963</p><p className="mt-1 text-sm text-blue-100/70">год основания</p></div><p className="max-w-[155px] text-right text-xs leading-5 text-blue-100/70">Энергетика · Строительство · Транспорт · Наука</p></div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+          <div className="relative mx-auto max-w-7xl px-4 pb-6 sm:px-6 lg:px-8"><div className="hero-ticker"><span>01</span><span>Кара-Кульский технический институт</span><span className="ml-auto hidden sm:inline">Смотреть программы ↓</span></div></div>
+        </section>
 
-      <section className="bg-slate-100 py-20 dark:bg-[#081b2b]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <MotionReveal>
-            <SectionHeading eyebrow="Направления" title="Найди своё направление" description="Выбирайте программу, которая соответствует вашему интересу и инженерным амбициям." />
-          </MotionReveal>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {programs.map((program) => (
-              <Link key={program.slug} href={`/education/programs/${program.slug}`} className="group block overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
-                <div className="relative h-52 overflow-hidden">
-                  <Image
-                    src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80"
-                    alt={program.title}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                  />
-                  <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/50" />
-                </div>
-                <div className="space-y-4 p-6">
-                  <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-300">
-                    <span>{program.code}</span>
-                    <span>{program.level}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">{program.title}</h3>
-                  <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{program.description}</p>
-                  <div className="flex items-center justify-between pt-2 text-sm font-semibold text-slate-900 dark:text-white">
-                    <span>Подробнее</span>
-                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                  </div>
-                </div>
-              </Link>
-            ))}
+        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+          <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
+            <div><p className="eyebrow-modern">О институте</p><h2 className="display-heading">Сильная база.<br /><span>Большие задачи.</span></h2></div>
+            <div><p className="max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">История института началась с подготовки инженерных кадров для строительства Токтогульской ГЭС. Сегодня мы сохраняем эту связь с энергетикой, строительством и практикой.</p><div className="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-4">{stats.map((stat) => <div key={stat.label} className="metric-card"><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div><Link href="/about/history" className="mt-8 inline-flex items-center gap-2 font-bold text-blue-700 dark:text-lime-300">Посмотреть историю <ArrowRight className="h-4 w-4" /></Link></div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <MotionReveal>
-          <SectionHeading eyebrow="Почему выбирают нас" title="Инженерная традиция, сильная база и реальные возможности" description="Филиал помогает студентам развивать техническое мышление, практические навыки и уверенность в своей будущей профессии." />
-        </MotionReveal>
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
-          {[
-            { icon: <GraduationCap className="h-6 w-6" />, title: "Инженерные традиции", text: "Сильная история подготовки специалистов для энергетики и строительства." },
-            { icon: <Building2 className="h-6 w-6" />, title: "Техническое образование", text: "Практическая база и фундаментальные дисциплины инженерного профиля." },
-            { icon: <Compass className="h-6 w-6" />, title: "Связь с регионом", text: "Подготовка специалистов для региона и его крупных инфраструктурных проектов." },
-            { icon: <ChartNoAxesCombined className="h-6 w-6" />, title: "Практика", text: "Учебный процесс ориентирован на профессиональные задачи и компетенции." },
-            { icon: <ShieldCheck className="h-6 w-6" />, title: "Развитие", text: "Формирование потенциала для дальнейшего профессионального роста." },
-          ].map((item) => (
-            <Card key={item.title} className="flex h-full flex-col gap-4 border-slate-200 bg-white/90 dark:border-slate-800 dark:bg-slate-900/80">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-400/10 text-amber-600 dark:text-amber-300">{item.icon}</div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">{item.title}</h3>
-              <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{item.text}</p>
-            </Card>
-          ))}
-        </div>
-      </section>
+        <section className="tracks-section"><div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28"><div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end"><div><p className="eyebrow-modern">Образование</p><h2 className="display-heading">Найди своё <span>направление.</span></h2></div><Link href="/education" className="inline-flex items-center gap-2 font-bold text-blue-700 dark:text-lime-300">Все программы <ArrowUpRight className="h-4 w-4" /></Link></div><div className="mt-12 grid gap-4 md:grid-cols-2">{tracks.map((track) => <Link key={track.code} href={track.href} className={`track-card track-card--${track.color}`}><span className="track-card__code">{track.code}</span><div><h3>{track.title}</h3><p>{track.text}</p></div><ChevronRight className="track-card__arrow" /></Link>)}</div></div></section>
 
-      <section className="bg-slate-950 py-20 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading eyebrow="История и энергетика" title="Связь с гидроэнергетикой и инженерным развитием" description="Токтогульская ГЭС и инженерные кадры региона остаются одним из ключевых символов ценности технического образования в Кара-Куле." />
-          <div className="mt-12 space-y-6">
-            {timeline.map((item) => (
-              <div key={item.year} className="grid gap-4 rounded-[2rem] border border-slate-800 bg-slate-900/80 p-6 md:grid-cols-[120px_1fr] md:items-start">
-                <div className="text-2xl font-black text-amber-300">{item.year}</div>
-                <div>
-                  <div className="mb-2 flex items-center gap-3">
-                    <span className="inline-block h-3 w-3 rounded-full bg-amber-400" />
-                    <span className="text-xl font-bold">{item.title}</span>
-                  </div>
-                  <p className="max-w-3xl text-slate-300">{item.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28"><div className="grid gap-5 lg:grid-cols-[1.25fr_.75fr]"><div className="story-card"><div><p className="eyebrow-modern text-lime-300">История и энергия</p><h2 className="max-w-2xl text-4xl font-black tracking-[-.05em] text-white sm:text-6xl">Инженерия — это способ менять мир.</h2><p className="mt-6 max-w-xl leading-7 text-blue-100/75">Мы готовим специалистов, которые умеют видеть систему целиком: от энергии и инфраструктуры до безопасного движения и научного поиска.</p></div><Link href="/about/history" className="mt-12 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 px-5 py-3 font-bold text-white hover:bg-white/10">Читать историю <ArrowRight className="h-4 w-4" /></Link></div><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1"><div className="info-tile"><CalendarDays className="h-6 w-6 text-blue-600" /><div><b>Поступление</b><p>Понятный маршрут для абитуриента</p></div><Link href="/admission"><ArrowUpRight className="h-5 w-5" /></Link></div><div className="info-tile"><GraduationCap className="h-6 w-6 text-blue-600" /><div><b>Личный кабинет</b><p>Регистрация и доступ к сервисам</p></div><Link href="/account"><ArrowUpRight className="h-5 w-5" /></Link></div><div className="info-tile"><MapPin className="h-6 w-6 text-blue-600" /><div><b>Мы рядом</b><p>Кара-Куль · улица Сабирова, 2</p></div><Link href="/contacts"><ArrowUpRight className="h-5 w-5" /></Link></div></div></div></section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <MotionReveal>
-          <SectionHeading eyebrow="Студенческая жизнь" title="Лучшая среда для роста, общения и открытий" description="Научные проекты, мероприятия, спортивные активности и инициативы формируют полноценную университетскую среду." />
-        </MotionReveal>
-        <div className="grid gap-6 md:grid-cols-3">
-          {gallery.slice(0, 3).map((image) => (
-            <div key={image.title} className="group overflow-hidden rounded-[2rem]">
-              <div className="relative h-80 overflow-hidden">
-                <Image src={image.image} alt={image.title} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  <p className="text-lg font-bold">{image.title}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+        <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28"><div className="contact-band"><div><p className="eyebrow-modern">Есть вопрос?</p><h2 className="text-3xl font-black tracking-[-.04em] sm:text-5xl">Давайте разберёмся вместе.</h2><p className="mt-4 max-w-lg text-slate-600 dark:text-slate-300">Напишите нам по вопросам поступления, программ и документов. Форма проверяет данные и готова к подключению официального канала приёма.</p></div><ContactForm /></div></section>
 
-      <section className="bg-slate-100 py-20 dark:bg-slate-950/70">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <MotionReveal>
-            <SectionHeading eyebrow="Новости" title="Жизнь нашего университета" description="В этом разделе собраны актуальные новости и события. Если официальных публикаций нет, отображается корректное пустое состояние вместо вымышленных данных." />
-          </MotionReveal>
-          <div className="rounded-[2rem] border border-dashed border-slate-300 bg-white/70 p-10 text-center dark:border-slate-700 dark:bg-slate-900/60">
-            <p className="text-lg font-semibold text-slate-900 dark:text-white">Пока нет подтверждённых новостей</p>
-            <p className="mt-2 text-slate-600 dark:text-slate-300">На сайте включён безопасный пустой статус до появления официальных публикаций от учебного заведения.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-900 py-20 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-300">Абитуриентам</p>
-              <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Твоё будущее начинается здесь</h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">Узнай о направлениях подготовки, условиях поступления и сделай первый шаг к инженерной профессии.</p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="/admission/how-to-apply" className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-3 font-semibold text-slate-950 hover:bg-amber-300">Как поступить <ArrowRight className="h-4 w-4" /></Link>
-                <Link href="/admission/faq" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white hover:bg-white/10">Задать вопрос</Link>
-              </div>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              {quickLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="rounded-[1.8rem] border border-slate-800 bg-slate-950/80 p-5 text-left transition hover:border-amber-400/80 hover:bg-slate-900">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/10 text-amber-300"><Sparkles className="h-5 w-5" /></div>
-                  <div className="text-lg font-semibold">{link.label}</div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <MotionReveal>
-          <SectionHeading eyebrow="FAQ" title="Частые вопросы" description="Ответы построены на проверенных общественных данных и предназначены для безопасного навигационного сопровождения абитуриента." />
-        </MotionReveal>
-        <div className="space-y-4">
-          {faqItems.map((item) => (
-            <div key={item.q} className="rounded-[1.5rem] border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{item.q}</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">{item.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-slate-100 py-20 dark:bg-[#091827]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div>
-              <SectionHeading eyebrow="Контакты" title="Свяжитесь с филиалом" description="Мы подготовили контактную информацию, форму обратной связи и быстрые ссылки для консультации." />
-              <div className="space-y-5 text-slate-700 dark:text-slate-200">
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-1 h-5 w-5 text-amber-500" />
-                  <div>
-                    <p className="font-semibold">Адрес</p>
-                    <p>{campus.address}</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Star className="mt-1 h-5 w-5 text-amber-500" />
-                  <div>
-                    <p className="font-semibold">Телефон</p>
-                    {campus.phones.map((phone) => (
-                      <p key={phone}>{phone}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-lg shadow-slate-200/50 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="rounded-[2rem] border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-900">
-          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-            {documents.map((item) => (
-              <div key={item.title} className="rounded-[1.5rem] bg-slate-100 p-5 dark:bg-slate-800">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-400/10 text-amber-600 dark:text-amber-300"><BadgeCheck className="h-5 w-5" /></div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{item.category}</p>
-                <h3 className="mt-3 text-lg font-bold text-slate-900 dark:text-white">{item.title}</h3>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{item.type}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <section className="bg-slate-950"><div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"><div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-[.22em] text-lime-300">Быстрый доступ</p><p className="mt-2 text-xl font-bold text-white">Всё нужное — в одном месте.</p></div><div className="flex flex-wrap gap-2">{quickLinks.map((link) => <Link key={link.href} href={link.href} className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white/80 hover:border-lime-300 hover:text-lime-300">{link.label}</Link>)}</div></div></div></section>
+      </main>
     </SiteShell>
   );
 }

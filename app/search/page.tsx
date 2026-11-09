@@ -1,0 +1,2 @@
+import { InfoPage } from "@/components/info-page";
+export default function SearchPage(){return <InfoPage title="Поиск по сайту" description="Быстрый доступ к разделам кампуса." items={[{title:"Образовательные программы",text:"Электроэнергетика, строительство, транспорт и физико-математическое образование.",href:"/education"},{title:"Поступление",text:"Шаги, документы и вопросы абитуриентов.",href:"/admission"},{title:"Личный кабинет",text:"Регистрация и доступ к сервисам.",href:"/account"},{title:"Контакты",text:"Адрес и телефоны института.",href:"/contacts"}]}/>}
